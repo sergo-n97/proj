@@ -1,0 +1,65 @@
+﻿@model proj.ViewModel.HomeDto
+@{
+    //ViewData["Title"] = "Список смартфонов";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Учет программистов по проектам</title>
+</head>
+<body>
+    <h3>Список</h3>
+    <table>
+        <tr>
+            <td>Компания</td>
+            <td>Проект</td>
+            <td>Программист</td>
+            <td></td>
+        </tr>
+        @foreach (var companies in Model.Companies)
+        {
+            <tr>
+                <td>@companies.Name</td>
+                @*<td>@companies.Project</td>
+                <td>@companies.Programmist</td>*@
+                <td><a href="~/Home/Buy/@companies.Id">Изменить</a></td>
+            </tr>
+        }
+    </table>
+    <form method="post">
+
+        <p>
+            <label for="companies.Name">Выберите компанию:</label>
+            <select name="companies.Name">
+                <option value="Fors">Fors</option>
+            </select>
+            <label for="companies.Project">Выберите проект:</label>
+            <select name="companies.Project">
+                <option value="Notes">Notes</option>
+                <option value="Calendar">Calendar</option>
+                <option value="Calculator">Calculator</option>
+            </select>
+            <label for="companies.Programmist">Выберите программиста:</label>
+            <select name="companies.Programmist">
+                <option value="Sam">Sam</option>
+                <option value="Mark">Mark</option>
+                <option value="Ron">Ron</option>
+            </select>
+        </p>
+
+        <p>
+            <input type="submit" value="Добавить" />
+        </p>
+    </form>
+    <form method="post">
+        <label>Программист:</label><br />
+        <input type="text" name="companies.Programmist" /><br /><br />
+        <input type="submit" value="Добавить" />
+        <label>Проект:</label><br />
+        <input type="text" name="companies.Project" /><br /><br />
+        <input type="submit" value="Добавить" />
+    </form>
+</body>
+</html>
